@@ -18,12 +18,22 @@ export class AppComponent {
     });
   }
 
-  increment() {
-    this.store.dispatch({ type: INCREMENT });
+  increment(value = 1) {
+    this.store.dispatch({
+      type: INCREMENT,
+      payload: {
+        value
+      }
+    });
   }
 
-  decrement() {
-    this.store.dispatch({ type: DECREMENT });
+  decrement(value = 1) {
+    this.store.dispatch({
+      type: DECREMENT,
+      payload: {
+        value
+      }
+    });
   }
 
   reset() {
