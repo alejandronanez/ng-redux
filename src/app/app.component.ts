@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { AppState } from './reducers';
+import { INCREMENT, DECREMENT, RESET } from './counter.reducer';
 
 @Component({
   selector: 'app-root',
@@ -15,5 +16,17 @@ export class AppComponent {
     this.counter = store.select<number>((state: AppState) => {
       return state.counter;
     });
+  }
+
+  increment() {
+    this.store.dispatch({ type: INCREMENT });
+  }
+
+  decrement() {
+    this.store.dispatch({ type: DECREMENT });
+  }
+
+  reset() {
+    this.store.dispatch({ type: RESET });
   }
 }
