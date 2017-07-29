@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import { AppState } from './reducers';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  counter: Observable<number>;
+
+  constructor(private store: Store<AppState>) {
+    this.counter = store.select<number>((state: AppState) => {
+      return state.counter;
+    });
+  }
 }
